@@ -1,65 +1,80 @@
-import Image from "next/image";
+"use client";
+
+import { useRef } from "react";
 
 export default function Home() {
+  const imgRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const rect = imgRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    const rotateX = (y / 20) * -1;
+    const rotateY = x / 20;
+
+    imgRef.current.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
+
+  const handleMouseLeave = () => {
+    imgRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <main className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden px-6">
+
+      {/* Animated Background Shapes */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 blob"></div>
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 blob"></div>
+      <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 blob"></div>
+
+      {/* Content */}
+      <div className="relative max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+        {/* Left Side: Text */}
+        <div>
+          <h1 className="text-5xl font-extrabold tracking-tight text-gray-900">
+            Enterprise Backend Engineer & System Architect
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-6 text-lg text-gray-700 leading-relaxed">
+            Designing maintainable systems, disciplined processes, and data‑driven workflows across PHP, Django,
+            Java, Next.js, and enterprise environments. I build backend systems that stay reliable under real‑world
+            pressure and align engineering, operations, and productivity into one cohesive workflow.
           </p>
+
+          <div className="mt-10 flex gap-6">
+            <a
+              href="/projects"
+              className="px-6 py-3 rounded-md bg-gray-900 text-white font-medium hover:bg-gray-700 transition"
+            >
+              View Projects
+            </a>
+
+            <a
+              href="/contact"
+              className="px-6 py-3 rounded-md border border-gray-900 text-gray-900 font-medium hover:bg-gray-100 transition"
+            >
+              Contact Me
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Right Side: 3D Tilt Image */}
+        <div
+          className="tilt-container flex justify-center"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <img
+            ref={imgRef}
+            src="/profile.jpg"
+            alt="Profile"
+            className="tilt w-64 h-64 rounded-full object-cover shadow-xl border"
+          />
         </div>
-      </main>
-    </div>
+
+      </div>
+    </main>
   );
 }
