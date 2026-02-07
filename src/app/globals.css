@@ -105,3 +105,29 @@ body {
 .heading-animate {
   animation: slideFade 1s ease-out forwards;
 }
+.typing-lines {
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: revealLines 4s steps(7) forwards;
+}
+
+@keyframes revealLines {
+  from { height: 0; }
+  to { height: 140px; } /* Adjust based on content */
+}
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background-color: #ffffff;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
