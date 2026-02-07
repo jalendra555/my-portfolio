@@ -48,7 +48,7 @@ export default function Header() {
 
       {/* Mobile Dropdown */}
       {open && (
-        <div className="md:hidden flex flex-col bg-white/80 backdrop-blur-lg shadow-lg px-6 py-4 space-y-4 text-gray-800 font-medium">
+        <div className="md:hidden w-full flex flex-col bg-white/80 backdrop-blur-lg shadow-lg px-6 py-4 space-y-4 text-gray-800 font-medium">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)}>About</Link>
           <Link href="/skills" onClick={() => setOpen(false)}>Skills</Link>
