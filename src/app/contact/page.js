@@ -24,15 +24,21 @@ export default function Contact() {
           </p>
 
           {/* Contact Info */}
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-3  ">
+
+          <div className="space-y-8"></div>
 
             {/* Left: Contact Details */}
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+            <div className="space-y-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Get in Touch</h2>
 
               <p className="text-gray-700 text-lg">
                 <span className="font-semibold">Email:</span> jalendrafordubai@gmail.com
               </p>
+
+               <p className="text-gray-700 text-lg">
+                 <span className="font-semibold">Phone:</span> +971529705852
+               </p>
 
               <p className="text-gray-700 text-lg">
                 <span className="font-semibold">Location:</span> Dubai, UAE
@@ -44,43 +50,6 @@ export default function Contact() {
 
 
             </div>
-
-            {/* Right: Contact Form */}
-            <form className="space-y-4">
-              <div>
-                <label className="block text-gray-800 font-medium mb-1">Name</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-gray-900"
-                  placeholder="Your Name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-gray-800 font-medium mb-1">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-gray-900"
-                  placeholder="Your Email"
-                />
-              </div>
-
-              <div>
-                <label className="block text-gray-800 font-medium mb-1">Message</label>
-                <textarea
-                  rows="4"
-                  className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-gray-900"
-                  placeholder="Write your message..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-3 rounded-md bg-gray-900 text-white font-medium hover:bg-gray-700 transition"
-              >
-                Send Message
-              </button>
-            </form>
 
           </div>
         </div>
